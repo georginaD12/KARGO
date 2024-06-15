@@ -1,0 +1,44 @@
+<h1><b>Create new order</b></h1>
+<form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="form-group">
+        <label for="name">Name</label><br>
+        <input type="text" [formControl]="form.controls.name" id="name" name="name"><br>
+    </div>
+
+    <div class="text-danger error-message"
+        *ngIf=" form.controls['name'].invalid &&(form.controls['name'].touched ||form.controls['name'].dirty)"
+        style="width: 100%;">
+        <div class="error" *ngIf="form.controls['name'].errors?.['required']">*The name field is required</div>
+    </div>
+
+
+
+    <div class="form-group">
+        <label for="status">Status short description</label><br>
+        <input type="status" [formControl]="form.controls.status" id="status" name="status"><br>
+    </div>
+
+    <div class="text-danger error-message"
+        *ngIf=" form.controls['status'].invalid &&(form.controls['status'].touched ||form.controls['status'].dirty)"
+        style="width: 100%;">
+        <div class="error" *ngIf="form.controls['status'].errors?.['required']">*The status is required</div>
+    </div>
+
+
+    <div class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" id="description" rows="3" [formControl]="form.controls.description"></textarea>
+    </div>
+
+
+    <div class="text-danger error-message"
+        *ngIf=" form.controls['description'].invalid &&(form.controls['description'].touched ||form.controls['description'].dirty)"
+        style="width: 100%;">
+        <div class="error" *ngIf="form.controls['description'].errors?.['required']">*The description is required</div>
+    </div>
+
+
+
+
+    <button id="submit" type="submit" class="btn btn-success buttonClass btn-lg " style="text-align: center;" [disabled]="!form.valid">Submit</button>
+</form>
